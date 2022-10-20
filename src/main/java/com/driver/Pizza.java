@@ -9,10 +9,10 @@ public class Pizza {
     private boolean isExtraCheeseAdded;
     private boolean isExtraToppingAdded;
     private boolean isTakeAwayRequired;
-    private boolean isBillGenerator=false;
-    private int getPriceExtraCheese=0;
-    private int getPriceExtraTopping=0;
-    private int getTakeAwayRequired=0;
+    private boolean isBillGenerator;
+    private int getPriceExtraCheese;
+    private int getPriceExtraTopping;
+    private int getTakeAwayRequired;
 
     public Pizza(Boolean isVeg){
         this.isExtraCheeseAdded=false;
