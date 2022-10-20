@@ -6,29 +6,69 @@ public class Pizza {
     private Boolean isVeg;
     private String bill;
 
+    private boolean isExtraCheeseAdded=false;
+    private boolean isExtraToppingAdded=false;
+    private boolean isTakeAwayRequired=false;
+    private boolean isBillGenerator=false;
+    private int getPriceExtraCheese=0;
+    private int getPriceExtraTopping=0;
+    private int getTakeAwayRequired=0;
+
     public Pizza(Boolean isVeg){
-        this.isVeg = isVeg;
-        // your code goes here
+        this.getPriceExtraCheese=80;
+        this.isVeg=isVeg;
+        if(this.isVeg){
+            this.price=300;
+            this.getPriceExtraTopping=70;
+        }else{
+            this.price=400;
+            this.getPriceExtraTopping=120;
+        }
+        this.getTakeAwayRequired=20;
+        this.bill="Base Price Of The Pizza: "+this.price+"\n";
     }
 
     public int getPrice(){
         return this.price;
     }
 
-    public void addExtraCheese(){
-        // your code goes here
-    }
 
+    public void addExtraCheese(){
+        if(!isExtraCheeseAdded){
+            this.price=this.price+this.getPriceExtraCheese;
+            isExtraCheeseAdded=true;
+        }
+    }
     public void addExtraToppings(){
-        // your code goes here
+        if(!isExtraToppingAdded){
+            this.price=this.price+this.getPriceExtraTopping;
+            isExtraToppingAdded=true;
+        }
     }
 
     public void addTakeaway(){
-        // your code goes here
+        if(!isTakeAwayRequired){
+            this.price=this.price+this.getTakeAwayRequired;
+            isTakeAwayRequired=true;
+        }
     }
 
     public String getBill(){
-        // your code goes here
+
+        if(!isBillGenerator){
+            if(isExtraCheeseAdded){
+                bill+="Extra Cheese Added: "+getPriceExtraCheese+"\n";
+            }
+            if(isExtraToppingAdded){
+                bill+="Extra Toppings Added: "+getPriceExtraTopping+"\n";
+            }
+            if(isTakeAwayRequired){
+                bill+="Paperbag Added: "+getTakeAwayRequired+"\n";
+            }
+            bill+="Total Price: "+price;
+
+            isBillGenerator=true;
+        }
         return this.bill;
     }
 }
